@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "zig-best-practices": {
+      "source": "0xbigboss/claude-code",
+      "sourceType": "github",
+      "computedHash": "6d3960674726a43bbffa8c053975b94d07f7a36bfab75546b95d5a618ba8df6e"
+    }
+  }
+}
