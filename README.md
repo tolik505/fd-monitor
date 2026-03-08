@@ -14,7 +14,31 @@ Use it to quickly spot FD growth and find processes that are consuming the most 
 ## Requirements
 
 - macOS (the sampler uses `libproc` APIs)
-- Zig compiler
+
+## Use From GitHub Release
+
+Download and run the prebuilt binary (no Zig toolchain required):
+
+```bash
+#!/usr/bin/env bash
+
+VERSION=0.1.0
+curl -L -o fd-monitor "https://github.com/tolik505/fd-monitor/releases/download/${VERSION}/fd-monitor"
+curl -L -o fd-monitor.sha256 "https://github.com/tolik505/fd-monitor/releases/download/${VERSION}/fd-monitor.sha256"
+shasum -a 256 -c fd-monitor.sha256
+chmod +x fd-monitor
+./fd-monitor
+```
+
+Run with options:
+
+```bash
+./fd-monitor --interval-ms=250 --history-points=180 --top=30
+```
+
+## Build From Source
+
+Requires Zig compiler.
 
 ## Run
 
