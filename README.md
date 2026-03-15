@@ -7,6 +7,34 @@ It continuously samples process FD counts, then renders:
 - number of inaccessible PIDs (permission-limited processes)
 - top processes by open FD count
 
+```text
+fd-monitor  |  ts=1772966458123  total_fds=14320  inaccessible_pids=18
+Graph (20 points, min=14102, max=14320, current=14320)
+    5496 |            #     #########
+    5494 |             #             #
+    5492 |############     #                   #
+    5490 |                              #
+    5488 |                             #
+    5486 |              # #           #  ######
+    5484 |               #
+    5482 |
+    5480 |
+    5479 |                                      #########
+         +-----------------------------------------------
+
+Top processes by open file descriptors
+PID      FD_COUNT   PCT     NAME
+-------------------------------------------
+712      1180       8.24%  Chrome
+498      911        6.36%  Code
+301      734        5.12%  Dropbox
+84       511        3.56%  launchd
+1        402        2.80%  kernel_task
+others   10582      73.89%  (312 processes)
+
+Press Ctrl-C to exit.
+```
+
 ## Why this tool
 
 Use it to quickly spot FD growth and find processes that are consuming the most file descriptors.
@@ -78,38 +106,6 @@ Each refresh prints:
 - 10-row ASCII graph of recent total FD values
 - table of top processes (`PID`, `FD_COUNT`, `%`, `NAME`)
 - aggregated `others` row when more processes exist than `--top`
-
-Stop with `Ctrl-C`.
-
-## Sample output
-
-```text
-fd-monitor  |  ts=1772966458123  total_fds=14320  inaccessible_pids=18
-Graph (20 points, min=14102, max=14320, current=14320)
-    5496 |            #     #########
-    5494 |             #             #
-    5492 |############     #                   #
-    5490 |                              #
-    5488 |                             #
-    5486 |              # #           #  ######
-    5484 |               #
-    5482 |
-    5480 |
-    5479 |                                      #########
-         +-----------------------------------------------
-
-Top processes by open file descriptors
-PID      FD_COUNT   PCT     NAME
--------------------------------------------
-712      1180       8.24%  Chrome
-498      911        6.36%  Code
-301      734        5.12%  Dropbox
-84       511        3.56%  launchd
-1        402        2.80%  kernel_task
-others   10582      73.89%  (312 processes)
-
-Press Ctrl-C to exit.
-```
 
 ## Tests
 
